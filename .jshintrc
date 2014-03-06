@@ -1,12 +1,27 @@
 {
     "node"     : true,
     "bitwise"  : true,
+    "camelcase": false,
+    "curly"    : true,
+    "forin"    : true,
     "undef"    : true,
     "eqeqeq"   : true,
-    "forin"    : true,
-    "immed"    : true,
+    "immed"    : false,
+    "latedef"  : true,
+    "maxerr"   : 50,
     "noarg"    : true,
     "unused"   : true,
+    "debug"    : false,
+    "eqnull"   : true,
     "maxlen"   : 120,
-    "predef"   : ["describe", "it", "beforeEach", "afterEach"]
+    "jquery"   : true,
+    "browser"  : true,
+    "trailing" : true,
+    "globals"  : {
+        "describe": true, 
+        "it": true, 
+        "beforeEach": true, 
+        "afterEach": true,
+        "ko": true
+    }
 }
