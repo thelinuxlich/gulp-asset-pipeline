@@ -10,18 +10,18 @@
     "latedef"  : true,
     "maxerr"   : 50,
     "noarg"    : true,
-    "unused"   : true,
+    "unused"   : "vars",
     "debug"    : false,
     "eqnull"   : true,
-    "maxlen"   : 120,
     "jquery"   : true,
     "browser"  : true,
     "trailing" : true,
     "globals"  : {
-        "describe": true, 
-        "it": true, 
-        "beforeEach": true, 
+        "describe": true,
+        "it": true,
+        "beforeEach": true,
         "afterEach": true,
-        "ko": true
+        "ko": true,
+        "expect": true,
     }
 }
