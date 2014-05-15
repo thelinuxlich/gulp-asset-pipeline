@@ -1,23 +1,29 @@
 {
-  "name": "gulp-validate",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "jscs": "*",
-    "jshint": "*",
-    "gulp": "*",
-    "gulp-jshint": "*",
-    "gulp-jscs": "*",
-    "gulp-concat": "*",
-    "gulp-uglify": "*",
-    "gulp-rename": "*",
-    "multipipe": "*",
-    "jshint-stylish": "*"
-  }
+    "name": "gulp-asset-pipeline",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "jshint": "*",
+        "gulp": "*",
+        "gulp-jshint": "*",
+        "gulp-concat": "*",
+        "gulp-uglify": "*",
+        "gulp-rename": "*",
+        "multipipe": "*",
+        "jshint-stylish": "*",
+        "gulp-imagemin": "*",
+        "gulp-less": "*",
+        "gulp-autoprefixer": "*",
+        "gulp-clean": "*",
+        "gulp-notify": "*",
+        "gulp-livereload": "*",
+        "gulp-minify-css": "*",
+        "tiny-lr": "*"
+    }
 }
