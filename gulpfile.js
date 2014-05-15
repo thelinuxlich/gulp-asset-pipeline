@@ -15,7 +15,7 @@ var paths = {
     less = require('gulp-less'),
     prefixer = require('gulp-autoprefixer'),
     pipe = require('multipipe'),
-    stylish = require('jshint-stylish'),
+    summary = require('jshint-summary'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
@@ -67,7 +67,10 @@ gulp.task('scripts', function() {
     return pipe(
         gulp.src(paths.src.scripts),
         jshint(),
-        jshint.reporter(stylish),
+        jshint.reporter(summary({
+            verbose: true,
+            reasonCol: 'cyan,bold'
+        })),
         concat('main.debug.js'),
         gulp.dest(paths.dist + '/js'),
         uglify(),

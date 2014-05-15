@@ -16,7 +16,7 @@
         "gulp-uglify": "*",
         "gulp-rename": "*",
         "multipipe": "*",
-        "jshint-stylish": "*",
+        "jshint-summary": "*",
         "gulp-imagemin": "*",
         "gulp-less": "*",
         "gulp-autoprefixer": "*",
