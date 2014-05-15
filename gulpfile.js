@@ -13,7 +13,6 @@ var paths = {
     jshint = require('gulp-jshint'),
     imagemin = require('gulp-imagemin'),
     less = require('gulp-less'),
-    minifycss = require('gulp-minify-css'),
     prefixer = require('gulp-autoprefixer'),
     pipe = require('multipipe'),
     stylish = require('jshint-stylish'),
@@ -21,6 +20,7 @@ var paths = {
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     livereload = require('gulp-livereload'),
+    minify = require('gulp-minify-css'),
     notify = require("gulp-notify"),
     lr = require('tiny-lr'),
     server = lr();
@@ -29,14 +29,17 @@ gulp.task('less', function() {
     return pipe(
         gulp.src(paths.src.less + "/*.less"),
         less({
-            paths: [paths.src.less]
+            paths: [paths.src.less],
+            compress: false
         }),
         prefixer('last 2 versions', 'ie 8'),
-        concat("main.css"),
-        minifycss(),
+        concat("main.debug.css"),
+        gulp.dest(paths.dist + '/styles'),
+        minify(),
+        rename('main.css'),
         gulp.dest(paths.dist + '/styles'),
         livereload(server),
-        notify("LESS has been compiled.")
+        notify("[LESS] OK")
     );
 });
 
@@ -49,7 +52,7 @@ gulp.task('images', function() {
             interlaced: true
         }),
         gulp.dest(paths.dist + '/images'),
-        notify("Images were compressed.")
+        notify("[IMAGES] OK")
     );
 });
 
@@ -57,22 +60,22 @@ gulp.task('fonts', function() {
     return pipe(
         gulp.src(paths.src.fonts),
         gulp.dest(paths.dist + '/fonts'),
-        notify("Fonts were moved.")
+        notify("[FONTS] OK")
     );
 });
 
 gulp.task('scripts', function() {
     return pipe(
-        gulp.src(paths.scripts),
+        gulp.src(paths.src.scripts),
         jshint(),
         jshint.reporter(stylish),
-        concat('main.js'),
+        concat('main.debug.js'),
         gulp.dest(paths.dist + '/scripts'),
         uglify(),
-        rename('main.min.js'),
+        rename('main.js'),
         gulp.dest(paths.dist + '/scripts'),
         livereload(server),
-        notify("Scripts were compressed.")
+        notify("[SCRIPTS] OK")
     );
 });
 
