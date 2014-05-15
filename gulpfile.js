@@ -7,7 +7,7 @@ var paths = {
         less: 'assets/css/less/**/*.less',
         fonts: 'assets/fonts/**/*'
     },
-    dist: './build/'
+    dist: './build'
 },
     gulp = require('gulp'),
     jshint = require('gulp-jshint'),
@@ -23,6 +23,7 @@ var paths = {
     minify = require('gulp-minify-css'),
     notify = require("gulp-notify"),
     lr = require('tiny-lr'),
+    changed = require('gulp-changed'),
     server = lr();
 
 gulp.task('less', function() {
@@ -45,6 +46,7 @@ gulp.task('less', function() {
 gulp.task('images', function() {
     return pipe(
         gulp.src(paths.src.images),
+        changed(paths.dist + '/img'),
         imagemin({
             optimizationLevel: 3,
             progressive: true,
@@ -58,6 +60,7 @@ gulp.task('images', function() {
 gulp.task('fonts', function() {
     return pipe(
         gulp.src(paths.src.fonts),
+        changed(paths.dist + '/fonts'),
         gulp.dest(paths.dist + '/fonts'),
         notify("[FONTS] OK")
     );
