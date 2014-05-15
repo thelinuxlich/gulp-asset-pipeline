@@ -5,7 +5,8 @@ var paths = {
             'assets/js/test.js'
         ],
         less: 'assets/css/less/**/*.less',
-        fonts: 'assets/fonts/**/*'
+        fonts: 'assets/fonts/**/*',
+        php: './**/*.php'
     },
     dist: './build'
 },
@@ -97,6 +98,9 @@ gulp.task('watch', function() {
     gulp.watch(paths.src.mages, ['images']);
     gulp.watch(paths.src.less, ['less']);
     gulp.watch(paths.src.fonts, ['fonts']);
+    gulp.watch(paths.src.php).on('change', function(file) {
+        server.changed(file.path);
+    });
 });
 
 gulp.task('dev', ['livereload', 'watch']);
