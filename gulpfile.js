@@ -2,7 +2,7 @@ var paths = {
     src: {
         images: 'assets/img/**/*',
         scripts: [
-            'assets/scripts/test.js'
+            'assets/js/test.js'
         ],
         less: 'assets/css/less/**/*.less',
         fonts: 'assets/fonts/**/*'
@@ -33,10 +33,10 @@ gulp.task('less', function() {
         }),
         prefixer('last 2 versions', 'ie 8'),
         concat("main.debug.css"),
-        gulp.dest(paths.dist + '/styles'),
+        gulp.dest(paths.dist + '/css'),
         minify(),
         rename('main.css'),
-        gulp.dest(paths.dist + '/styles'),
+        gulp.dest(paths.dist + '/css'),
         livereload(server),
         notify("[LESS] OK")
     );
@@ -50,7 +50,7 @@ gulp.task('images', function() {
             progressive: true,
             interlaced: true
         }),
-        gulp.dest(paths.dist + '/images'),
+        gulp.dest(paths.dist + '/img'),
         notify("[IMAGES] OK")
     );
 });
@@ -69,10 +69,10 @@ gulp.task('scripts', function() {
         jshint(),
         jshint.reporter(stylish),
         concat('main.debug.js'),
-        gulp.dest(paths.dist + '/scripts'),
+        gulp.dest(paths.dist + '/js'),
         uglify(),
         rename('main.js'),
-        gulp.dest(paths.dist + '/scripts'),
+        gulp.dest(paths.dist + '/js'),
         livereload(server),
         notify("[SCRIPTS] OK")
     );
