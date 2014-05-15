@@ -1,11 +1,11 @@
 var paths = {
     src: {
-        images: 'src/images/**/*',
+        images: 'assets/img/**/*',
         scripts: [
-            'src/scripts/test.js'
+            'assets/scripts/test.js'
         ],
-        less: 'src/less',
-        fonts: 'src/fonts/**/*'
+        less: 'assets/css/less/**/*.less',
+        fonts: 'assets/fonts/**/*'
     },
     dist: './build/'
 },
@@ -27,9 +27,8 @@ var paths = {
 
 gulp.task('less', function() {
     return pipe(
-        gulp.src(paths.src.less + "/*.less"),
+        gulp.src(paths.src.less),
         less({
-            paths: [paths.src.less],
             compress: false
         }),
         prefixer('last 2 versions', 'ie 8'),
@@ -88,10 +87,10 @@ gulp.task('livereload', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(paths.scripts, ['lint', 'concat_minify']);
-    gulp.watch(paths.images, ['images']);
-    gulp.watch(paths.less, ['less']);
-    gulp.watch(paths.fonts, ['fonts']);
+    gulp.watch(paths.src.scripts, ['scripts']);
+    gulp.watch(paths.src.mages, ['images']);
+    gulp.watch(paths.src.less, ['less']);
+    gulp.watch(paths.src.fonts, ['fonts']);
 });
 
 gulp.task('dev', ['livereload', 'watch']);
