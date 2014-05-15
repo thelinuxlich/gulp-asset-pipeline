@@ -1,6 +1,10 @@
 ### Instructions
 
-* npm install -g gulp jshint jscs
+* Install Node.js
+* Install Growl(if Windows)
+* npm install -g gulp jshint
+* go the project root
 * npm install
-* gulp build
-* gulp dev
+* change assets path where needed in gulpfile.js
+* gulp build (for compiling everything)
+* gulp dev (for watching changes)
