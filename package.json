@@ -24,7 +24,9 @@
         "gulp-notify": "*",
         "gulp-livereload": "*",
         "gulp-minify-css": "*",
+        "gulp.spritesmith": "*",
         "tiny-lr": "*",
-        "gulp-changed": "*"
+        "gulp-changed": "*",
+        "run-sequence": "*"
     }
 }

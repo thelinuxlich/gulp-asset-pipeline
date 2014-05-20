@@ -1,5 +1,6 @@
 var paths = {
     src: {
+        sprites: 'assets/sprites/**/*.png',
         images: 'assets/img/**/*',
         scripts: [
             'assets/js/test.js'
@@ -25,11 +26,13 @@ var paths = {
     notify = require("gulp-notify"),
     lr = require('tiny-lr'),
     changed = require('gulp-changed'),
+    spritesmith = require('gulp.spritesmith'),
+    runSequence = require('run-sequence'),
     server = lr();
 
 gulp.task('less', function() {
     return pipe(
-        gulp.src(paths.src.less),
+        gulp.src([paths.src.less, paths.dist + "/css/sprite.css"]),
         less({
             compress: false
         }),
@@ -93,10 +96,24 @@ gulp.task('livereload', function() {
     });
 });
 
+gulp.task('sprite', function() {
+    var spriteData = gulp.src(paths.src.sprites).pipe(spritesmith({
+        imgName: 'sprite.png',
+        cssName: 'sprite.css'
+    }));
+    spriteData.img.pipe(gulp.dest(paths.dist + "/css"));
+    spriteData.css.pipe(gulp.dest(paths.dist + "/css"));
+});
+
 gulp.task('watch', function() {
     gulp.watch(paths.src.scripts, ['scripts']);
-    gulp.watch(paths.src.mages, ['images']);
-    gulp.watch(paths.src.less, ['less']);
+    gulp.watch(paths.src.images, ['images']);
+    gulp.watch(paths.src.less, function() {
+        runSequence('sprite', 'less');
+    });
+    gulp.watch(paths.src.sprites, function() {
+        runSequence('sprite', 'less');
+    });
     gulp.watch(paths.src.fonts, ['fonts']);
     gulp.watch(paths.src.php).on('change', function(file) {
         server.changed(file.path);
@@ -105,4 +122,4 @@ gulp.task('watch', function() {
 
 gulp.task('dev', ['livereload', 'watch']);
 
-gulp.task('build', ['less', 'images', 'fonts', 'scripts']);
+gulp.task('build', runSequence('sprite', 'less', ['images', 'fonts', 'scripts']));
