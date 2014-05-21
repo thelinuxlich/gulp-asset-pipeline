@@ -1,13 +1,14 @@
 {
     "name": "gulp-asset-pipeline",
-    "version": "0.0.1",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+    "version": "0.5",
+    "description": "Example of Asset Pipeline using Gulp",
+    "main": "gulpfile.js",
+    "author": "Alisson Cavalcante Agiani",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/thelinuxlich/gulp-asset-pipeline.git"
     },
-    "author": "",
-    "license": "ISC",
     "dependencies": {
         "jshint": "*",
         "gulp": "*",
