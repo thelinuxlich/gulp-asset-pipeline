@@ -1,6 +1,6 @@
 {
     "name": "gulp-asset-pipeline",
-    "version": "0.5",
+    "version": "0.5.0",
     "description": "Example of Asset Pipeline using Gulp",
     "main": "gulpfile.js",
     "author": "Alisson Cavalcante Agiani",
